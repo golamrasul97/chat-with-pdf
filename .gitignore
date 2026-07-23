@@ -1,0 +1,23 @@
+# Secrets — never commit the real .env (only .env.example is tracked)
+.env
+
+# Virtual environment
+.venv/
+venv/
+
+# Python bytecode / caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local model + HF caches (embeddings model downloads here on first run)
+.cache/
+
+# Gradio scratch
+.gradio/
+flagged/
+
+# OS / editor noise
+.DS_Store
+.vscode/
+.idea/

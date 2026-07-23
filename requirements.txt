@@ -1,0 +1,24 @@
+# Pinned, CPU-only. Same file works locally (Python 3.13) and on a
+# Hugging Face CPU Space (Python 3.10) — every pin below ships wheels for both.
+
+# UI — native Hugging Face Spaces SDK
+gradio==6.20.0
+
+# Orchestration — loaders, splitters, vector store, chat model wrapper
+langchain==1.3.14
+langchain-community==0.4.2          # PyPDFLoader, FAISS vector store
+langchain-openai==1.4.0             # ChatOpenAI (talks to Ollama AND Groq)
+langchain-huggingface==1.2.2        # HuggingFaceEmbeddings
+langchain-text-splitters==1.1.2     # RecursiveCharacterTextSplitter
+
+# Embeddings — all-MiniLM-L6-v2 runs on CPU, no API key (pulls torch transitively)
+sentence-transformers==5.6.0
+
+# Vector index — in-memory, per session
+faiss-cpu==1.14.3
+
+# PDF text extraction (keeps page numbers)
+pypdf==6.14.2
+
+# Loads .env for local dev (the Space injects env vars itself)
+python-dotenv==1.2.2

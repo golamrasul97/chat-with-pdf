@@ -1,0 +1,25 @@
+name: Sync to Hugging Face Space
+
+# Push to GitHub, and this mirrors main to the Space so the live demo redeploys.
+# Requires an HF_TOKEN GitHub Actions secret (a Hugging Face write token).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}   # also allows triggering a sync manually from the Actions tab
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # push the full history, not a shallow clone
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        # EDIT both <HF_USERNAME> placeholders below to the Hugging Face username.
+        run: |
+          git push --force \
+            "https://<HF_USERNAME>:$HF_TOKEN@huggingface.co/spaces/<HF_USERNAME>/chat-with-pdf" \
+            HEAD:main
