@@ -23,7 +23,15 @@ def get_embeddings() -> HuggingFaceEmbeddings:
     stateless, so we cache the instance rather than reloading per request or
     per session. (Downloaded once to ~/.cache on first ever run.)
     """
-    return HuggingFaceEmbeddings(model_name=settings.embedding_model)
+    return HuggingFaceEmbeddings(
+        model_name=settings.embedding_model,
+        # Pin to CPU. On Hugging Face ZeroGPU, torch reports CUDA as available,
+        # so sentence-transformers would auto-move the model onto the GPU
+        # outside a @spaces.GPU block — which ZeroGPU intercepts and crashes.
+        # This app is CPU-only by design, so forcing CPU sidesteps that entirely
+        # (and is the correct device for local dev too).
+        model_kwargs={"device": "cpu"},
+    )
 
 
 def build_index(chunks: list[Document]) -> FAISS:
