@@ -22,3 +22,9 @@ pypdf==6.14.2
 
 # Loads .env for local dev (the Space injects env vars itself)
 python-dotenv==1.2.2
+
+# Required only by Hugging Face ZeroGPU (see the @spaces.GPU stub in app.py).
+# Harmless everywhere else; the import in app.py is guarded, so local dev that
+# skips this install still works.
+spaces==0.51.1
+

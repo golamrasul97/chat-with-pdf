@@ -15,6 +15,20 @@ from rag.chat import Answer, answer_question
 from rag.index import build_index
 from rag.ingest import load_and_chunk
 
+# Hugging Face ZeroGPU refuses to start a Space that declares no @spaces.GPU
+# function. This app is CPU-only — embeddings run on CPU and generation is a
+# Groq API call — so it needs no GPU. This tiny no-op stub exists purely to
+# satisfy that ZeroGPU startup check; it does nothing on any other platform,
+# and the import is optional so local dev without `spaces` still runs.
+try:
+    import spaces
+
+    @spaces.GPU
+    def _zerogpu_startup_stub():
+        return None
+except ImportError:
+    pass
+
 
 def on_upload(pdf_path: str | None):
     """Build a fresh per-session index from the uploaded PDF.
