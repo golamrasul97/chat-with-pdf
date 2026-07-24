@@ -18,8 +18,7 @@ jobs:
       - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        # EDIT both <HF_USERNAME> placeholders below to the Hugging Face username.
         run: |
           git push --force \
-            "https://<HF_USERNAME>:$HF_TOKEN@huggingface.co/spaces/<HF_USERNAME>/chat-with-pdf" \
+            "https://mdgolamrasul:$HF_TOKEN@huggingface.co/spaces/mdgolamrasul/chat-with-pdf" \
             HEAD:main
