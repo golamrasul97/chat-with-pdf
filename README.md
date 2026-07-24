@@ -13,8 +13,10 @@ short_description: Ask a PDF questions; answers cite the source page
 # 📄 Chat with PDF
 
 Upload a PDF, ask questions in plain language, and get answers **with the source
-page cited**. This is Stage 1 project of my AI Engineering Roadmap: a minimal but
-complete **Retrieval-Augmented Generation (RAG)** application.
+page cited**. This is the
+[Stage 1 project](https://golamrasul97.github.io/ai-engineering-roadmap/stage-1-rag/)
+of my AI Engineering Roadmap: a minimal but complete
+**Retrieval-Augmented Generation (RAG)** application.
 
 **▶️ Live demo:** https://huggingface.co/spaces/mdgolamrasul/chat-with-pdf
 
