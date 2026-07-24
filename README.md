@@ -6,7 +6,8 @@ colorTo: purple
 sdk: gradio
 sdk_version: 6.20.0
 app_file: app.py
-pinned: false
+pinned: true
+short_description: Ask a PDF questions and get answers with the source page cited
 ---
 
 # 📄 Chat with PDF
@@ -14,6 +15,8 @@ pinned: false
 Upload a PDF, ask questions in plain language, and get answers **with the source
 page cited**. This is Stage 1 project of my AI Engineering Roadmap: a minimal but
 complete **Retrieval-Augmented Generation (RAG)** application.
+
+**▶️ Live demo:** https://huggingface.co/spaces/mdgolamrasul/chat-with-pdf
 
 ## The RAG loop
 
@@ -110,17 +113,17 @@ In the Space → **Settings**:
 The Space rebuilds and runs `app.py` automatically. Ollama can't run on the free
 CPU Space, which is exactly why the hosted demo points at Groq.
 
-### 4. (Optional, already included) Auto-sync from GitHub
+### 4. Auto-sync from GitHub (enabled)
 
 `.github/workflows/sync-to-hf.yml` force-pushes `main` to the Space on every
-push to GitHub, so only `git push origin` is ever needed. To enable it:
+push to GitHub, so **`git push origin` is all you ever need** — the live demo
+redeploys itself.
 
-1. Create a **write** token at https://huggingface.co/settings/tokens.
-2. In the GitHub repo → **Settings → Secrets and variables → Actions**, add a
-   secret named `HF_TOKEN` with that value.
-3. Replace the two `<HF_USERNAME>` placeholders in the workflow file with the HF
-   username, then push. (To push to the Space manually instead, delete that
-   file.)
+It's wired up with an `HF_TOKEN` GitHub Actions secret (a Hugging Face **write**
+token from https://huggingface.co/settings/tokens). To reuse this repo under a
+different account, swap the two `mdgolamrasul` occurrences in the workflow's push
+URL for your HF username and set your own `HF_TOKEN` secret. (To push to the
+Space manually instead, delete that file.)
 
 ## Project layout
 
