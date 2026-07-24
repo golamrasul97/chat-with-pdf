@@ -7,7 +7,7 @@ sdk: gradio
 sdk_version: 6.20.0
 app_file: app.py
 pinned: true
-short_description: Ask a PDF questions and get answers with the source page cited
+short_description: Ask a PDF questions; answers cite the source page
 ---
 
 # 📄 Chat with PDF
